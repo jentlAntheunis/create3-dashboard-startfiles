@@ -7,20 +7,15 @@
 \*------------------------------------*/
 
 :root {
-    /* colors */
-    --color-alpha-light: MEDIUMSLATEBLUE;
-    --color-alpha: SLATEBLUE;
-
-    --color-neutral-light: LIGHTSLATEGRAY;
-    --color-neutral: SLATEGRAY;
-    --color-neutral-dark: DARKSLATEGRAY;
+    /* colors */    
 
     /* Shadows */
 
     /* border radius */
 
+    /* whitespace */
+
     /* transitions */
-    --transition-alpha: .1s;
 }
 
 /*------------------------------------*\
@@ -37,7 +32,6 @@ html {
     font-size: 16px;
     line-height: 1.5;
     font-family: Helvetica, arial, sans-serif;
-    color: var(--color-neutral-dark);
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -57,14 +51,8 @@ html {
 * Customize the background color to match your design.
 */
 
-::-moz-selection {
-    background: var(--color-alpha);
-    color: white;
-    text-shadow: none;
-}
-
 ::selection {
-    background: var(--color-alpha);
+    background: mediumslateblue;
     color: white;
     text-shadow: none;
 }
@@ -170,21 +158,21 @@ hr {
 }
 
 a {
-    transition: all var(--transition-alpha);
-    color: var(--color-alpha);
-    outline-color: var(--color-alpha);
+    transition: all .1s;
+    color: mediumslateblue;
+    outline-color: mediumslateblue;
     outline-width: medium;
     outline-offset: 2px;
 }
 
 a:visited,
 a:active {
-    color: var(--color-alpha);
+    color: mediumslateblue;
 }
 
 a:hover,
 a:focus {
-    color: var(--color-alpha-light);
+    color: slateblue;
 }
 
 label,
@@ -194,10 +182,6 @@ input {
 
 select {
     width: 100%;
-}
-
-input::placeholder {
-    color: var(--color-neutral-light);
 }
 
 /*------------------------------------*\
@@ -306,11 +290,11 @@ input::placeholder {
 */
 
 .u-color-neutral {
-    color: var(--color-neutral);
+    color: darkgray;
 }
 
 .u-color-neutral-dark {
-    color: var(--color-neutral-dark);
+    color: grat;
 }
 
 /*
