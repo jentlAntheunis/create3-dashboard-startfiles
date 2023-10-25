@@ -1,26 +1,84 @@
 /*------------------------------------*\
 #FONTS
 \*------------------------------------*/
+/* #region Fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;700&display=swap');
+
+/* #endregion */
 
 /*------------------------------------*\
 #Variables
 \*------------------------------------*/
+/* #region Variables */
 
 :root {
-    /* colors */
+    /* fonts */
+    --global-root-font-size: 15px;
 
-    /* Shadows */
-
-    /* border radius */
+    --global-lineheight-xs: calc(var(--global-root-font-size) * 1.25);
 
     /* whitespace */
+    /* 
+        root font size = 15px
+        baseline = 5 px 
+        15px = 1rem
+        5 px = 1rem / 3
+    */
+    --global-baseline: calc(5 / var(--global-root-font-size) * 1rem);
+    --global-whitespace-xxs: var(--global-baseline);            /* 5px */
+    --global-whitespace-xs: calc(var(--global-baseline) * 2);   /* 10px */
+    --global-whitespace-s: calc(var(--global-baseline) * 3);    /* 15px */
+    --global-whitespace-m: calc(var(--global-baseline) * 4);    /* 20px */
+    --global-whitespace-l: calc(var(--global-baseline) * 5);    /* 25px */
+    --global-whitespace-xl: calc(var(--global-baseline) * 6);   /* 30px */
+
+    /* colors */
+    --global-color-red: #FF6565;
+    --global-color-green: #3CC480;
+    --global-color-cyan: #54D8FF;
+    --global-color-blue: #3B86FF;
+    --global-color-purple: #A3A0FB;
+
+    --global-color-neutral-900: white;
+    --global-color-neutral-850: #F0F0F7;
+    --global-color-neutral-800: #EBEBF2;
+    --global-color-neutral-700: #D7DAE2;
+    --global-color-neutral-600: #BCBCCB;
+    --global-color-neutral-500: #A5A4BF;
+    --global-color-neutral-400: #808495;
+    --global-color-neutral-300: #4D4F5C;
+    --global-color-neutral-200: #43425D;
+    --global-color-neutral-100: #3B3B53;
+
+    --global-color-background: var(--global-color-neutral-850);
+    --global-color-border-light: var(--global-color-neutral-800);
+    --global-color-border-medium: var(--global-color-neutral-700);
+    --global-color-border-dark: var(--global-color-neutral-400);
+    --global-color-icon-light: var(--global-color-neutral-600);
+    --global-color-icon-dark: var(--global-color-neutral-500);
+    --global-color-text-dark: var(--global-color-neutral-300);
+    --global-color-text-darker: var(--global-color-neutral-200);
+
+    /* Shadows */
+    --global-box-shadow: 0 0 0 1px rgba(0, 0, 0, .025), 0 2px 6px rgba(0, 0, 0, 0.05);
+    --global-box-shadow-lg: 0 0 0 1px rgba(0, 0, 0, .025), 0 2px 10px rgba(0, 0, 0, .1);
+
+    --global-input-shadow: 0 2px 3px rgba(0, 0, 0, .05);
+    --global-input-focus-shadow: 0 0 5px var(--global-color-alpha-light);
+
+    /* border radius */
+    --global-border-radius: calc(4 / var(--global-root-font-size));
 
     /* transitions */
 }
 
+/* #endregion */
+
 /*------------------------------------*\
 #GENERIC
 \*------------------------------------*/
+/* #region Generic */
 
 /*
     Generic: Page
@@ -30,11 +88,11 @@
 
 html {
     line-height: 1.5;
-    font-family: Helvetica, arial, sans-serif;
+    font-family: 'Source Sans 3', Helvetica, arial, sans-serif;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: white;
+    background-color: var(--global-color-background);
 }
 
 *,
@@ -56,9 +114,12 @@ html {
     text-shadow: none;
 }
 
+/* #endregion */
+
 /*------------------------------------*\
 #Elements
 \*------------------------------------*/
+/* #region Elements */
 
 /*
 Elements: Images
@@ -183,9 +244,12 @@ select {
     width: 100%;
 }
 
+/* #endregion */
+
 /*------------------------------------*\
 #OBJECTS
 \*------------------------------------*/
+/* #region Objects */
 
 /*
     Objects: Row
@@ -269,9 +333,60 @@ select {
     border: 0;
 }
 
+/* #endregion */
+
 /*------------------------------------*\
 #COMPONENTS
 \*------------------------------------*/
+
+/* #region Components */
+
+/*
+    Component: App
+    ---
+    Website main app
+*/
+
+.c-app {
+    min-height: 100vh;
+
+    @media (min-width: 768px) {
+        display: grid;
+        grid-template-areas: 
+            "logo topbar"
+            "sidebar main";
+        grid-template-columns: 260px 1fr;
+        grid-template-rows: 70px 1fr;
+    }
+}
+
+/*
+    Component: Topbar
+    ---
+    Website main Topbar
+*/
+
+.c-app__topbar {
+    --topbar-background-color: var(--global-color-neutral-900);
+    background-color: var(--topbar-background-color);
+    box-shadow: var(--global-box-shadow);
+
+    grid-area: topbar;
+}
+
+
+/*
+    Component: Sidebar
+    ---
+    Website main Sidebar
+*/
+
+.c-app__sidebar {
+    --sidebar-background-color: var(--global-color-neutral-200);
+    background-color: var(--sidebar-background-color);
+
+    grid-area: sidebar;
+}
 
 /*
     Component: Logo
@@ -279,9 +394,36 @@ select {
     Website main logo
 */
 
+.c-app__logo {
+    --logo-background-color: var(--global-color-neutral-100);
+    background-color: var(--logo-background-color);
+
+    grid-area: logo;
+
+    display: flex;
+    align-items: center;
+}
+
+.c-logo__text {
+    --logo-color: var(--global-color-neutral-900);
+    color: var(--logo-color);
+
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: var(--global-root-font-size);
+    line-height: var(--global-lineheight-xs);
+    margin: var(--global-whitespace-m);
+
+}
+
+
+/* #endregion */
+
 /*------------------------------------*\
 #UTILITIES
 \*------------------------------------*/
+
+/* #region Utilities */
 
 /*
     Utilities: color
@@ -381,9 +523,13 @@ select {
     font-size: .875rem;
 }
 
+/* #endregion */
+
 /*------------------------------------*\
 #MEDIA
 \*------------------------------------*/
+
+/* #region Media */
 
 /*
     Media Queries
@@ -490,3 +636,5 @@ No media query since this is the default in mobile first design
         page-break-after: avoid;
     }
 }
+
+/* #endregion */
