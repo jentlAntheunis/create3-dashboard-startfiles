@@ -14,9 +14,9 @@
 
 :root {
     /* fonts */
-    --global-root-font-size: 15px;
+    --global-root-font-size: 15;
 
-    --global-lineheight-xs: calc(var(--global-root-font-size) * 1.25);
+    --global-lineheight-xs: calc(20 / var(--global-root-font-size));    /* 20px */
 
     /* whitespace */
     /* 
@@ -93,6 +93,8 @@ html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: var(--global-color-background);
+
+    font-size: calc(var(--global-root-font-size) / 16 * 100%); 
 }
 
 *,
@@ -356,7 +358,7 @@ select {
             "logo topbar"
             "sidebar main";
         grid-template-columns: 260px 1fr;
-        grid-template-rows: 70px 1fr;
+        grid-template-rows: auto 1fr;
     }
 }
 
@@ -412,7 +414,7 @@ select {
     font-weight: bold;
     font-size: var(--global-root-font-size);
     line-height: var(--global-lineheight-xs);
-    margin: var(--global-whitespace-m);
+    margin: var(--global-whitespace-l) var(--global-whitespace-m);
 
 }
 
